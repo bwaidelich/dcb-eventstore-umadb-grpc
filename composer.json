@@ -1,0 +1,79 @@
+{
+  "name": "wwwision/dcb-eventstore-umadb-grpc",
+  "description": "UmaDB adapter (gRPC) for the Dynamic Consistency Boundary implementation",
+  "type": "package",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bastian Waidelich",
+      "email": "b.waidelich@wwwision.de"
+    }
+  ],
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/bwaidelich"
+    },
+    {
+      "type": "paypal",
+      "url": "https://www.paypal.me/bwaidelich"
+    }
+  ],
+  "require": {
+    "php": ">=8.4",
+    "ext-grpc": "*",
+    "webmozart/assert": "^1.11",
+    "guzzlehttp/guzzle": "^7",
+    "wwwision/dcb-eventstore": "^5",
+    "psr/clock": "^1.0",
+    "google/protobuf": "^4.33",
+    "grpc/grpc": "^1.74"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpstan/phpstan": "^2",
+    "squizlabs/php_codesniffer": "^4.0.x-dev",
+    "phpunit/phpunit": "^12",
+    "brianium/paratest": "^7",
+    "testcontainers/testcontainers": "1.0.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Wwwision\\DCBEventStoreUmaDbGrpc\\": "src/",
+      "Umadb\\": "src/Generated/Umadb/",
+      "GPBMetadata\\": "src/Generated/GPBMetadata/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Wwwision\\DCBEventStoreUmaDbGrpc\\Tests\\": "tests/",
+      "Wwwision\\DCBEventStore\\Tests\\": "vendor/wwwision/dcb-eventstore/tests/"
+    }
+  },
+  "scripts": {
+    "test:phpstan": "phpstan",
+    "test:cs": "phpcs --colors src",
+    "test:cs:fix": "phpcbf --colors src",
+    "test:integration": [
+      "echo $DCB_TEST_DSN",
+      "phpunit tests/Integration --exclude-group=parallel --exclude-group=feature_onlyLastEvent --exclude-group=feature_liveStream"
+    ],
+    "test:consistency": [
+      "Wwwision\\DCBEventStoreUmaDbGrpc\\Tests\\Integration\\ConcurrencyTest::prepare",
+      "paratest tests/Integration --group=parallel --functional --processes 20",
+      "Wwwision\\DCBEventStoreUmaDbGrpc\\Tests\\Integration\\ConcurrencyTest::validateEvents",
+      "Wwwision\\DCBEventStoreUmaDbGrpc\\Tests\\Integration\\ConcurrencyTest::cleanup"
+    ],
+    "test": [
+      "@test:phpstan",
+      "@test:cs",
+      "@test:integration",
+      "@test:consistency"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
