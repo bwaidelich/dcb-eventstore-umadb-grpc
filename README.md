@@ -13,9 +13,9 @@ composer require wwwision/dcb-eventstore-umadb-grpc
 ### Create instance
 
 ```php
-use Wwwision\DCBEventStoreUmaDb\UmaDbEventStore;
+use Wwwision\DCBEventStoreUmaDbGrpc\UmaDbEventStore;
 
-$eventStore = UmaDbEventStore::create('http://127.0.0.1:50051');
+$eventStore = UmaDbEventStore::create('127.0.0.1:50051');
 ```
 
 #### Specify api key / CA certificate
@@ -23,10 +23,10 @@ $eventStore = UmaDbEventStore::create('http://127.0.0.1:50051');
 UmaDB can be used with [TLS and API Key](https://umadb.io/cli.html):
 
 ```php
-use Wwwision\DCBEventStoreUmaDb\UmaDbEventStore;
+use Wwwision\DCBEventStoreUmaDbGrpc\UmaDbEventStore;
 
 $eventStore = UmaDbEventStore::create(
-  url: 'http://127.0.0.1:50051',
+  hostname: '127.0.0.1:50051',
   apiKey: 'secret',
   caPath: '/path/to/certificate.pem',
 );
