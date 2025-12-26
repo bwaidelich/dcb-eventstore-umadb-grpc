@@ -18,6 +18,20 @@ use Wwwision\DCBEventStoreUmaDb\UmaDbEventStore;
 $eventStore = UmaDbEventStore::create('http://127.0.0.1:50051');
 ```
 
+#### Specify api key / CA certificate
+
+UmaDB can be used with [TLS and API Key](https://umadb.io/cli.html):
+
+```php
+use Wwwision\DCBEventStoreUmaDb\UmaDbEventStore;
+
+$eventStore = UmaDbEventStore::create(
+  url: 'http://127.0.0.1:50051',
+  apiKey: 'secret',
+  caPath: '/path/to/certificate.pem',
+);
+```
+
 See [wwwision/dcb-eventstore](https://github.com/bwaidelich/dcb-eventstore) for more details and usage examples
 
 > [!NOTE]  
