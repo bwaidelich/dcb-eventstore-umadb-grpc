@@ -22,7 +22,7 @@ final class UmaDbEventStoreTest extends EventStoreTestBase
         if ($this->testContainer === null) {
             $this->testContainer = new GenericContainer('umadb/umadb')
                 ->withExposedPorts(50051)
-                ->withWait(new WaitForLog('UmaDB started', false, 120000))
+                ->withWait(new WaitForLog('UmaDB started', false, 60000))
                 ->start();
         }
         return UmaDbEventStore::create($this->testContainer->getHost() . ':' . $this->testContainer->getMappedPort(50051), clock: $this->getTestClock());
@@ -52,7 +52,7 @@ final class UmaDbEventStoreTest extends EventStoreTestBase
                 'UMADB_TLS_KEY' => '/certs/server-key.pem',
             ])
             ->withMount($certDir, '/certs')
-            ->withWait(new WaitForLog('UmaDB started', false, 120000))
+            ->withWait(new WaitForLog('UmaDB started', false, 60000))
             ->start();
 
         $eventStore = UmaDbEventStore::create(
@@ -87,7 +87,7 @@ final class UmaDbEventStoreTest extends EventStoreTestBase
                 'UMADB_TLS_KEY' => '/certs/server-key.pem',
             ])
             ->withMount($certDir, '/certs')
-            ->withWait(new WaitForLog('UmaDB started', false, 120000))
+            ->withWait(new WaitForLog('UmaDB started', false, 60000))
             ->start();
 
         // Create event store with TLS enabled (no API key)
@@ -117,7 +117,7 @@ final class UmaDbEventStoreTest extends EventStoreTestBase
     {
         $testContainer = new GenericContainer('umadb/umadb')
             ->withExposedPorts(50051)
-            ->withWait(new WaitForLog('UmaDB started', false, 120000))
+            ->withWait(new WaitForLog('UmaDB started', false, 60000))
             ->start();
 
         // Creating without apiKey uses insecure credentials
