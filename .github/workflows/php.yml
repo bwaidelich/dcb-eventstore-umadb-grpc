@@ -46,5 +46,9 @@ jobs:
     - name: Run Code Sniffer tests
       run: composer run-script test:cs
 
+    - name: Verify Docker is running
+      run: docker ps
+
     - name: Run integration tests
       run: composer run-script test:integration
+      continue-on-error: false
