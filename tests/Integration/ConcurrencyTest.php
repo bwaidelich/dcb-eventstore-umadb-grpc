@@ -45,7 +45,7 @@ final class ConcurrencyTest extends EventStoreConcurrencyTestBase
             if (!is_string($umaDBUrl)) {
                 self::$testContainer = new GenericContainer('umadb/umadb')
                     ->withExposedPorts(50051)
-                    ->withWait((new WaitForLog('UmaDB started'))->withTimeout(120))
+                    ->withWait(new WaitForLog('UmaDB started', false, 120000))
                     ->start();
                 $umaDBUrl = 'http://' . self::$testContainer->getHost() . ':' . self::$testContainer->getMappedPort(50051);
                 putenv('DCB_TEST_UMADB_URL=' . $umaDBUrl);
