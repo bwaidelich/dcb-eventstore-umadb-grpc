@@ -49,6 +49,12 @@ jobs:
     - name: Verify Docker is running
       run: docker ps
 
+    - name: Check PHP grpc extension
+      run: php -m | grep grpc
+
+    - name: Pre-pull UmaDB Docker image
+      run: docker pull umadb/umadb:latest
+
     - name: Run integration tests
       run: composer run-script test:integration
       continue-on-error: false
