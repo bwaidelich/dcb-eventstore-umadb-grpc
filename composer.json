@@ -40,7 +40,7 @@
   "autoload": {
     "psr-4": {
       "Wwwision\\DCBEventStoreUmaDbGrpc\\": "src/",
-      "Umadb\\": "src/Generated/Umadb/",
+      "Umadb\\V1\\": "src/Generated/Umadb/V1/",
       "GPBMetadata\\": "src/Generated/GPBMetadata/"
     }
   },

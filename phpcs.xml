@@ -4,4 +4,5 @@
     <rule ref="PSR2">
         <exclude name="Generic.Files.LineLength.TooLong" />
     </rule>
+    <exclude-pattern>*/src/Generated/*</exclude-pattern>
 </ruleset>

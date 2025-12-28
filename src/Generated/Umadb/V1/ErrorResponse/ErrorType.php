@@ -3,72 +3,67 @@
 # NO CHECKED-IN PROTOBUF GENCODE
 # source: umadb.proto
 
-namespace Umadb\ErrorResponseProto;
+namespace Umadb\V1\ErrorResponse;
 
 use UnexpectedValueException;
 
 /**
- * Protobuf type <code>umadb.ErrorResponseProto.ErrorType</code>
+ * Protobuf type <code>umadb.v1.ErrorResponse.ErrorType</code>
  */
 class ErrorType
 {
     /**
      * Generated from protobuf enum <code>IO = 0;</code>
      */
-    public const IO = 0;
+    const IO = 0;
     /**
      * Generated from protobuf enum <code>SERIALIZATION = 1;</code>
      */
-    public const SERIALIZATION = 1;
+    const SERIALIZATION = 1;
     /**
      * Generated from protobuf enum <code>INTEGRITY = 2;</code>
      */
-    public const INTEGRITY = 2;
+    const INTEGRITY = 2;
     /**
      * Generated from protobuf enum <code>CORRUPTION = 3;</code>
      */
-    public const CORRUPTION = 3;
+    const CORRUPTION = 3;
     /**
      * Generated from protobuf enum <code>INTERNAL = 4;</code>
      */
-    public const INTERNAL = 4;
-
+    const INTERNAL = 4;
     /**
-     * @var array<int, string>
+     * Generated from protobuf enum <code>AUTHENTICATION = 5;</code>
      */
-    private static array $valueToName = [
+    const AUTHENTICATION = 5;
+
+    private static $valueToName = [
         self::IO => 'IO',
         self::SERIALIZATION => 'SERIALIZATION',
         self::INTEGRITY => 'INTEGRITY',
         self::CORRUPTION => 'CORRUPTION',
         self::INTERNAL => 'INTERNAL',
+        self::AUTHENTICATION => 'AUTHENTICATION',
     ];
 
-    public static function name(int $value): string
+    public static function name($value)
     {
         if (!isset(self::$valueToName[$value])) {
             throw new UnexpectedValueException(sprintf(
-                'Enum %s has no name defined for value %s',
-                __CLASS__,
-                $value
-            ));
+                    'Enum %s has no name defined for value %s', __CLASS__, $value));
         }
         return self::$valueToName[$value];
     }
 
 
-    public static function value(string $name): int
+    public static function value($name)
     {
         $const = __CLASS__ . '::' . strtoupper($name);
         if (!defined($const)) {
             throw new UnexpectedValueException(sprintf(
-                'Enum %s has no value defined for name %s',
-                __CLASS__,
-                $name
-            ));
+                    'Enum %s has no value defined for name %s', __CLASS__, $name));
         }
-        $result = constant($const);
-        assert(is_int($result));
-        return $result;
+        return constant($const);
     }
 }
+

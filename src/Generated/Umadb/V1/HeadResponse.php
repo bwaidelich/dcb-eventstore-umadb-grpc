@@ -3,60 +3,67 @@
 # NO CHECKED-IN PROTOBUF GENCODE
 # source: umadb.proto
 
-namespace Umadb;
+namespace Umadb\V1;
 
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\Internal\Message;
 use Google\Protobuf\RepeatedField;
 
 /**
- * Head response message
- *
- * Generated from protobuf message <code>umadb.HeadResponseProto</code>
+ * Generated from protobuf message <code>umadb.v1.HeadResponse</code>
  */
-final class HeadResponseProto extends Message
+class HeadResponse extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>optional uint64 position = 1;</code>
      */
-    private int|null $position = null;
+    protected $position = null;
 
     /**
-     * @param array{position: int}|null $data
+     * Constructor.
+     *
+     * @param array $data {
+     *     Optional. Data for populating the Message object.
+     *
+     *     @type int|string $position
+     * }
      */
-    public function __construct(array|null $data = null)
-    {
+    public function __construct($data = NULL) {
         \GPBMetadata\Umadb::initOnce();
         parent::__construct($data);
     }
 
     /**
      * Generated from protobuf field <code>optional uint64 position = 1;</code>
+     * @return int|string
      */
-    public function getPosition(): int
+    public function getPosition()
     {
-        return $this->position ?? 0;
+        return isset($this->position) ? $this->position : 0;
     }
 
-    public function hasPosition(): bool
+    public function hasPosition()
     {
         return isset($this->position);
     }
 
-    public function clearPosition(): void
+    public function clearPosition()
     {
         unset($this->position);
     }
 
     /**
      * Generated from protobuf field <code>optional uint64 position = 1;</code>
+     * @param int|string $var
+     * @return $this
      */
-    public function setPosition(int $position): self
+    public function setPosition($var)
     {
-        GPBUtil::checkUint64($position);
-        $this->position = $position;
+        GPBUtil::checkUint64($var);
+        $this->position = $var;
 
         return $this;
     }
+
 }
+

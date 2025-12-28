@@ -3,36 +3,37 @@
 # NO CHECKED-IN PROTOBUF GENCODE
 # source: umadb.proto
 
-namespace Umadb;
+namespace Umadb\V1;
 
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\Internal\Message;
 use Google\Protobuf\RepeatedField;
 
 /**
- * Query Item message
- *
- * Generated from protobuf message <code>umadb.QueryItemProto</code>
+ * Generated from protobuf message <code>umadb.v1.QueryItem</code>
  */
-final class QueryItemProto extends Message
+class QueryItem extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>repeated string types = 1;</code>
-     * @var RepeatedField<string>
      */
-    private RepeatedField $types;
+    private $types;
     /**
      * Generated from protobuf field <code>repeated string tags = 2;</code>
-     * @var RepeatedField<string>
      */
-    private RepeatedField $tags;
+    private $tags;
 
     /**
-     * @param array{types?: string[], tags?: string[]}|null $data
+     * Constructor.
+     *
+     * @param array $data {
+     *     Optional. Data for populating the Message object.
+     *
+     *     @type string[] $types
+     *     @type string[] $tags
+     * }
      */
-    public function __construct($data = null)
-    {
+    public function __construct($data = NULL) {
         \GPBMetadata\Umadb::initOnce();
         parent::__construct($data);
     }
@@ -41,18 +42,19 @@ final class QueryItemProto extends Message
      * Generated from protobuf field <code>repeated string types = 1;</code>
      * @return RepeatedField<string>
      */
-    public function getTypes(): RepeatedField
+    public function getTypes()
     {
         return $this->types;
     }
 
     /**
      * Generated from protobuf field <code>repeated string types = 1;</code>
-     * @param string[] $types
+     * @param string[] $var
+     * @return $this
      */
-    public function setTypes(array $types): self
+    public function setTypes($var)
     {
-        $arr = GPBUtil::checkRepeatedField($types, \Google\Protobuf\Internal\GPBType::STRING);
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->types = $arr;
 
         return $this;
@@ -62,20 +64,23 @@ final class QueryItemProto extends Message
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      * @return RepeatedField<string>
      */
-    public function getTags(): RepeatedField
+    public function getTags()
     {
         return $this->tags;
     }
 
     /**
      * Generated from protobuf field <code>repeated string tags = 2;</code>
-     * @param string[] $tags
+     * @param string[] $var
+     * @return $this
      */
-    public function setTags(array $tags): self
+    public function setTags($var)
     {
-        $arr = GPBUtil::checkRepeatedField($tags, \Google\Protobuf\Internal\GPBType::STRING);
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
         $this->tags = $arr;
 
         return $this;
     }
+
 }
+

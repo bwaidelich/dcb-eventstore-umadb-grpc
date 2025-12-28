@@ -3,62 +3,69 @@
 # NO CHECKED-IN PROTOBUF GENCODE
 # source: umadb.proto
 
-namespace Umadb;
+namespace Umadb\V1;
 
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\GPBUtil;
-use Google\Protobuf\Internal\Message;
 use Google\Protobuf\RepeatedField;
 
 /**
- * Event message
- *
- * Generated from protobuf message <code>umadb.EventProto</code>
+ * Generated from protobuf message <code>umadb.v1.Event</code>
  */
-final class EventProto extends Message
+class Event extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>string event_type = 1;</code>
      */
-    private string $event_type = '';
+    protected $event_type = '';
     /**
      * Generated from protobuf field <code>repeated string tags = 2;</code>
-     * @var RepeatedField<string>
      */
-    private RepeatedField $tags;
+    private $tags;
     /**
      * Generated from protobuf field <code>bytes data = 3;</code>
      */
-    private string $data = '';
+    protected $data = '';
     /**
      * Generated from protobuf field <code>string uuid = 4;</code>
      */
-    private string $uuid = '';
+    protected $uuid = '';
 
     /**
-     * @param array{event_type: string, tags: string[], data: string, uuid?: string|null}|null $data
+     * Constructor.
+     *
+     * @param array $data {
+     *     Optional. Data for populating the Message object.
+     *
+     *     @type string $event_type
+     *     @type string[] $tags
+     *     @type string $data
+     *     @type string $uuid
+     * }
      */
-    public function __construct(array|null $data = null)
-    {
+    public function __construct($data = NULL) {
         \GPBMetadata\Umadb::initOnce();
         parent::__construct($data);
     }
 
     /**
      * Generated from protobuf field <code>string event_type = 1;</code>
+     * @return string
      */
-    public function getEventType(): string
+    public function getEventType()
     {
         return $this->event_type;
     }
 
     /**
      * Generated from protobuf field <code>string event_type = 1;</code>
+     * @param string $var
+     * @return $this
      */
-    public function setEventType(string $event_type): self
+    public function setEventType($var)
     {
-        GPBUtil::checkString($event_type, true);
-        $this->event_type = $event_type;
+        GPBUtil::checkString($var, True);
+        $this->event_type = $var;
 
         return $this;
     }
@@ -67,57 +74,67 @@ final class EventProto extends Message
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      * @return RepeatedField<string>
      */
-    public function getTags(): RepeatedField
+    public function getTags()
     {
         return $this->tags;
     }
 
     /**
      * Generated from protobuf field <code>repeated string tags = 2;</code>
-     * @param string[] $tags
+     * @param string[] $var
+     * @return $this
      */
-    public function setTags(array $tags): self
+    public function setTags($var)
     {
-        $this->tags = GPBUtil::checkRepeatedField($tags, GPBType::STRING);
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::STRING);
+        $this->tags = $arr;
 
         return $this;
     }
 
     /**
      * Generated from protobuf field <code>bytes data = 3;</code>
+     * @return string
      */
-    public function getData(): string
+    public function getData()
     {
         return $this->data;
     }
 
     /**
      * Generated from protobuf field <code>bytes data = 3;</code>
+     * @param string $var
+     * @return $this
      */
-    public function setData(string $data): self
+    public function setData($var)
     {
-        GPBUtil::checkString($data, false);
-        $this->data = $data;
+        GPBUtil::checkString($var, False);
+        $this->data = $var;
 
         return $this;
     }
 
     /**
      * Generated from protobuf field <code>string uuid = 4;</code>
+     * @return string
      */
-    public function getUuid(): string
+    public function getUuid()
     {
         return $this->uuid;
     }
 
     /**
      * Generated from protobuf field <code>string uuid = 4;</code>
+     * @param string $var
+     * @return $this
      */
-    public function setUuid(string $uuid): self
+    public function setUuid($var)
     {
-        GPBUtil::checkString($uuid, true);
-        $this->uuid = $uuid;
+        GPBUtil::checkString($var, True);
+        $this->uuid = $var;
 
         return $this;
     }
+
 }
+

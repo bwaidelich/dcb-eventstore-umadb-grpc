@@ -8,15 +8,15 @@ use DateTimeImmutable;
 use Grpc\ChannelCredentials;
 use Psr\Clock\ClockInterface;
 use RuntimeException;
-use Umadb\AppendConditionProto;
-use Umadb\AppendRequestProto;
-use Umadb\EventProto;
-use Umadb\QueryItemProto;
-use Umadb\QueryProto;
-use Umadb\ReadRequestProto;
-use Umadb\ReadResponseProto;
-use Umadb\SequencedEventProto;
-use Umadb\UmaDBServiceClient;
+use Umadb\V1\AppendCondition as UmadbAppendCondition;
+use Umadb\V1\AppendRequest;
+use Umadb\V1\DCBClient;
+use Umadb\V1\Event as UmadbEvent;
+use Umadb\V1\QueryItem;
+use Umadb\V1\Query as UmadbQuery;
+use Umadb\V1\ReadRequest;
+use Umadb\V1\ReadResponse;
+use Umadb\V1\SequencedEvent as UmadbSequencedEvent;
 use Webmozart\Assert\Assert;
 use Wwwision\DCBEventStore\AppendCondition\AppendCondition;
 use Wwwision\DCBEventStore\Event\Event;
@@ -34,7 +34,7 @@ final readonly class UmaDbEventStore implements EventStore
 {
 
     public function __construct(
-        private UmaDBServiceClient $client,
+        private DCBClient $client,
         private ClockInterface $clock,
         private string|null $apiKey = null,
     ) {
@@ -65,7 +65,7 @@ final readonly class UmaDbEventStore implements EventStore
             $credentials = ChannelCredentials::createInsecure();
         }
 
-        $client = new UmaDBServiceClient($hostname, ['credentials' => $credentials]);
+        $client = new DCBClient($hostname, ['credentials' => $credentials]);
         if ($clock === null) {
             $clock = new class implements ClockInterface {
                 public function now(): DateTimeImmutable
@@ -79,7 +79,7 @@ final readonly class UmaDbEventStore implements EventStore
 
     public function read(Query $query, ?ReadOptions $options = null): SequencedEvents
     {
-        $request = new ReadRequestProto();
+        $request = new ReadRequest();
 
         $queryProto = $this->convertQuery($query);
         $request->setQuery($queryProto);
@@ -95,8 +95,8 @@ final readonly class UmaDbEventStore implements EventStore
                 $request->setLimit($options->limit);
             }
         }
-        /** @var ReadResponseProto[] $responses */
-        $responses = $this->client->read($request, $this->getCallMetadata())->responses();
+        /** @var ReadResponse[] $responses */
+        $responses = $this->client->Read($request, $this->getCallMetadata())->responses();
         return SequencedEvents::create(static function () use ($responses) {
             foreach ($responses as $response) {
                 foreach ($response->getEvents() as $sequencedEventProto) {
@@ -108,24 +108,26 @@ final readonly class UmaDbEventStore implements EventStore
 
     public function append(Event|Events $events, ?AppendCondition $condition = null): void
     {
-        $request = new AppendRequestProto();
+        $request = new AppendRequest();
         if ($events instanceof Event) {
             $events = Events::fromArray([$events]);
         }
+        $eventProtos = [];
         foreach ($events as $event) {
             $data = [
                 'payload' => $event->data->value,
                 'metadata' => $event->metadata->value,
                 'recordedAt' => $this->clock->now()->format(DATE_ATOM),
             ];
-            $eventProto = new EventProto();
+            $eventProto = new UmadbEvent();
             $eventProto->setEventType($event->type->value);
             $eventProto->setData(json_encode($data, JSON_THROW_ON_ERROR),);
             $eventProto->setTags($event->tags->toStrings());
-            $request->getEvents()[] = $eventProto;
+            $eventProtos[] = $eventProto;
         }
+        $request->setEvents($eventProtos);
         if ($condition !== null) {
-            $conditionProto = new AppendConditionProto();
+            $conditionProto = new UmadbAppendCondition();
             if ($condition->after !== null) {
                 $conditionProto->setAfter($condition->after->value);
             }
@@ -135,7 +137,7 @@ final readonly class UmaDbEventStore implements EventStore
             $request->setCondition($conditionProto);
         }
 
-        [$_, $status] = $this->client->append($request, $this->getCallMetadata())->wait();
+        [$_, $status] = $this->client->Append($request, $this->getCallMetadata())->wait();
         if ($status->code !== \Grpc\STATUS_OK) {
             if ($condition !== null) {
                 if ($condition->after !== null) {
@@ -143,7 +145,7 @@ final readonly class UmaDbEventStore implements EventStore
                 }
                 throw ConditionalAppendFailed::becauseMatchingEventsExist();
             }
-            throw new RuntimeException('Append failed: ' . $status->details);
+            throw new RuntimeException(sprintf('Append failed (code: %d): %s', $status->code, $status->details));
         }
     }
 
@@ -158,11 +160,12 @@ final readonly class UmaDbEventStore implements EventStore
         return ['authorization' => ['Bearer ' . $this->apiKey]];
     }
 
-    private function convertQuery(Query $query): QueryProto
+    private function convertQuery(Query $query): UmadbQuery
     {
-        $queryProto = new QueryProto();
+        $queryProto = new UmadbQuery();
+        $queryItemProtos = [];
         foreach ($query as $item) {
-            $queryItemProto = new QueryItemProto();
+            $queryItemProto = new QueryItem();
             if ($item->eventTypes !== null) {
                 $types = [];
                 foreach ($item->eventTypes as $eventType) {
@@ -173,12 +176,13 @@ final readonly class UmaDbEventStore implements EventStore
             if ($item->tags !== null) {
                 $queryItemProto->setTags($item->tags->toStrings());
             }
-            $queryProto->getItems()[] = $queryItemProto;
+            $queryItemProtos[] = $queryItemProto;
         }
+        $queryProto->setItems($queryItemProtos);
         return $queryProto;
     }
 
-    private static function convertEvent(SequencedEventProto $sequencedEventProto): SequencedEvent
+    private static function convertEvent(UmadbSequencedEvent $sequencedEventProto): SequencedEvent
     {
         $umaDbEvent = $sequencedEventProto->getEvent();
         if ($umaDbEvent === null) {
@@ -192,7 +196,7 @@ final readonly class UmaDbEventStore implements EventStore
         $recordedAt = DateTimeImmutable::createFromFormat(DATE_ATOM, $data['recordedAt']);
         Assert::isInstanceOf($recordedAt, DateTimeImmutable::class);
         return new SequencedEvent(
-            SequencePosition::fromInteger($sequencedEventProto->getPosition()),
+            SequencePosition::fromInteger((int) $sequencedEventProto->getPosition()),
             $recordedAt,
             Event::create(
                 type: $umaDbEvent->getEventType(),
