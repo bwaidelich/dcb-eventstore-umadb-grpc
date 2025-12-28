@@ -45,9 +45,9 @@ final class QueryProto extends Message
 
     /**
      * Generated from protobuf field <code>repeated .umadb.QueryItemProto items = 1;</code>
-     * @param QueryItemProto[] $items
+     * @param QueryItemProto[]|RepeatedField $items
      */
-    public function setItems(array $items): self
+    public function setItems(array|RepeatedField $items): self
     {
         $arr = GPBUtil::checkRepeatedField($items, GPBType::MESSAGE, QueryItemProto::class);
         $this->items = $arr;

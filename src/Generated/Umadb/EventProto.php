@@ -74,9 +74,9 @@ final class EventProto extends Message
 
     /**
      * Generated from protobuf field <code>repeated string tags = 2;</code>
-     * @param string[] $tags
+     * @param string[]|RepeatedField $tags
      */
-    public function setTags(array $tags): self
+    public function setTags(array|RepeatedField $tags): self
     {
         $this->tags = GPBUtil::checkRepeatedField($tags, GPBType::STRING);
 

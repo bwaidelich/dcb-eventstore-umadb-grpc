@@ -48,9 +48,9 @@ final class QueryItemProto extends Message
 
     /**
      * Generated from protobuf field <code>repeated string types = 1;</code>
-     * @param string[] $types
+     * @param string[]|RepeatedField $types
      */
-    public function setTypes(array $types): self
+    public function setTypes(array|RepeatedField $types): self
     {
         $arr = GPBUtil::checkRepeatedField($types, \Google\Protobuf\Internal\GPBType::STRING);
         $this->types = $arr;
@@ -69,9 +69,9 @@ final class QueryItemProto extends Message
 
     /**
      * Generated from protobuf field <code>repeated string tags = 2;</code>
-     * @param string[] $tags
+     * @param string[]|RepeatedField $tags
      */
-    public function setTags(array $tags): self
+    public function setTags(array|RepeatedField $tags): self
     {
         $arr = GPBUtil::checkRepeatedField($tags, \Google\Protobuf\Internal\GPBType::STRING);
         $this->tags = $arr;

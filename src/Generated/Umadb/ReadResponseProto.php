@@ -47,9 +47,9 @@ final class ReadResponseProto extends Message
 
     /**
      * Generated from protobuf field <code>repeated .umadb.SequencedEventProto events = 1;</code>
-     * @param SequencedEventProto[] $events
+     * @param SequencedEventProto[]|RepeatedField $events
      */
-    public function setEvents(array $events): self
+    public function setEvents(array|RepeatedField $events): self
     {
         $arr = GPBUtil::checkRepeatedField($events, GPBType::MESSAGE, SequencedEventProto::class);
         $this->events = $arr;

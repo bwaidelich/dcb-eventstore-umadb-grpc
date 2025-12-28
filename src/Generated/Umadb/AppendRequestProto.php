@@ -47,9 +47,9 @@ final class AppendRequestProto extends Message
 
     /**
      * Generated from protobuf field <code>repeated .umadb.EventProto events = 1;</code>
-     * @param EventProto[] $events
+     * @param EventProto[]|RepeatedField $events
      */
-    public function setEvents(array $events): self
+    public function setEvents(array|RepeatedField $events): self
     {
         $this->events = GPBUtil::checkRepeatedField($events, GPBType::MESSAGE, EventProto::class);
 
