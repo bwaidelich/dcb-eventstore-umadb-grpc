@@ -10,18 +10,30 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Request payload for writing new events to the store.
+ *
  * Generated from protobuf message <code>umadb.v1.AppendRequest</code>
  */
 class AppendRequest extends \Google\Protobuf\Internal\Message
 {
     /**
+     * The list of new events to commit to the log.
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.Event events = 1;</code>
      */
     private $events;
     /**
+     * Concurrency controls to apply before allowing the append.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.AppendCondition condition = 2;</code>
      */
     protected $condition = null;
+    /**
+     * Optional checkpointing information to update the source's tracking cursor upon success.
+     *
+     * Generated from protobuf field <code>optional .umadb.v1.TrackingInfo tracking_info = 3;</code>
+     */
+    protected $tracking_info = null;
 
     /**
      * Constructor.
@@ -30,7 +42,11 @@ class AppendRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Umadb\V1\Event[] $events
+     *           The list of new events to commit to the log.
      *     @type \Umadb\V1\AppendCondition $condition
+     *           Concurrency controls to apply before allowing the append.
+     *     @type \Umadb\V1\TrackingInfo $tracking_info
+     *           Optional checkpointing information to update the source's tracking cursor upon success.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,6 +55,8 @@ class AppendRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The list of new events to commit to the log.
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.Event events = 1;</code>
      * @return RepeatedField<\Umadb\V1\Event>
      */
@@ -48,6 +66,8 @@ class AppendRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The list of new events to commit to the log.
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.Event events = 1;</code>
      * @param \Umadb\V1\Event[] $var
      * @return $this
@@ -61,6 +81,8 @@ class AppendRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Concurrency controls to apply before allowing the append.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.AppendCondition condition = 2;</code>
      * @return \Umadb\V1\AppendCondition|null
      */
@@ -80,6 +102,8 @@ class AppendRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Concurrency controls to apply before allowing the append.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.AppendCondition condition = 2;</code>
      * @param \Umadb\V1\AppendCondition $var
      * @return $this
@@ -88,6 +112,42 @@ class AppendRequest extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Umadb\V1\AppendCondition::class);
         $this->condition = $var;
+
+        return $this;
+    }
+
+    /**
+     * Optional checkpointing information to update the source's tracking cursor upon success.
+     *
+     * Generated from protobuf field <code>optional .umadb.v1.TrackingInfo tracking_info = 3;</code>
+     * @return \Umadb\V1\TrackingInfo|null
+     */
+    public function getTrackingInfo()
+    {
+        return $this->tracking_info;
+    }
+
+    public function hasTrackingInfo()
+    {
+        return isset($this->tracking_info);
+    }
+
+    public function clearTrackingInfo()
+    {
+        unset($this->tracking_info);
+    }
+
+    /**
+     * Optional checkpointing information to update the source's tracking cursor upon success.
+     *
+     * Generated from protobuf field <code>optional .umadb.v1.TrackingInfo tracking_info = 3;</code>
+     * @param \Umadb\V1\TrackingInfo $var
+     * @return $this
+     */
+    public function setTrackingInfo($var)
+    {
+        GPBUtil::checkMessage($var, \Umadb\V1\TrackingInfo::class);
+        $this->tracking_info = $var;
 
         return $this;
     }

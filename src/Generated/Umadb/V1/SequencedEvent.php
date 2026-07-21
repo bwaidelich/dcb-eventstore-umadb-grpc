@@ -10,15 +10,21 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * An event that has been successfully committed to the event log.
+ *
  * Generated from protobuf message <code>umadb.v1.SequencedEvent</code>
  */
 class SequencedEvent extends \Google\Protobuf\Internal\Message
 {
     /**
+     * The global, monotonically increasing sequence number of this event in the store.
+     *
      * Generated from protobuf field <code>uint64 position = 1;</code>
      */
     protected $position = 0;
     /**
+     * The original event data.
+     *
      * Generated from protobuf field <code>.umadb.v1.Event event = 2;</code>
      */
     protected $event = null;
@@ -30,7 +36,9 @@ class SequencedEvent extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int|string $position
+     *           The global, monotonically increasing sequence number of this event in the store.
      *     @type \Umadb\V1\Event $event
+     *           The original event data.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,6 +47,8 @@ class SequencedEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The global, monotonically increasing sequence number of this event in the store.
+     *
      * Generated from protobuf field <code>uint64 position = 1;</code>
      * @return int|string
      */
@@ -48,6 +58,8 @@ class SequencedEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The global, monotonically increasing sequence number of this event in the store.
+     *
      * Generated from protobuf field <code>uint64 position = 1;</code>
      * @param int|string $var
      * @return $this
@@ -61,6 +73,8 @@ class SequencedEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The original event data.
+     *
      * Generated from protobuf field <code>.umadb.v1.Event event = 2;</code>
      * @return \Umadb\V1\Event|null
      */
@@ -80,6 +94,8 @@ class SequencedEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The original event data.
+     *
      * Generated from protobuf field <code>.umadb.v1.Event event = 2;</code>
      * @param \Umadb\V1\Event $var
      * @return $this

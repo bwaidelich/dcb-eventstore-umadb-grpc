@@ -10,26 +10,42 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Represents a discrete state change, fact, or action within the system.
+ *
  * Generated from protobuf message <code>umadb.v1.Event</code>
  */
 class Event extends \Google\Protobuf\Internal\Message
 {
     /**
+     * The domain type or schema identifier of the event (e.g., 'UserCreated').
+     *
      * Generated from protobuf field <code>string event_type = 1;</code>
      */
     protected $event_type = '';
     /**
+     * Indexed labels used for filtering and categorizing events.
+     *
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      */
     private $tags;
     /**
+     * The serialized payload of the event (e.g., JSON, Protobuf).
+     *
      * Generated from protobuf field <code>bytes data = 3;</code>
      */
     protected $data = '';
     /**
+     * A universally unique identifier for the event, useful for idempotency and deduplication.
+     *
      * Generated from protobuf field <code>string uuid = 4;</code>
      */
     protected $uuid = '';
+    /**
+     * Additional context or headers (e.g., correlation IDs, user agents) not part of the core payload.
+     *
+     * Generated from protobuf field <code>repeated .umadb.v1.MetadataEntry metadata = 5;</code>
+     */
+    private $metadata;
 
     /**
      * Constructor.
@@ -38,9 +54,15 @@ class Event extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $event_type
+     *           The domain type or schema identifier of the event (e.g., 'UserCreated').
      *     @type string[] $tags
+     *           Indexed labels used for filtering and categorizing events.
      *     @type string $data
+     *           The serialized payload of the event (e.g., JSON, Protobuf).
      *     @type string $uuid
+     *           A universally unique identifier for the event, useful for idempotency and deduplication.
+     *     @type \Umadb\V1\MetadataEntry[] $metadata
+     *           Additional context or headers (e.g., correlation IDs, user agents) not part of the core payload.
      * }
      */
     public function __construct($data = NULL) {
@@ -49,6 +71,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The domain type or schema identifier of the event (e.g., 'UserCreated').
+     *
      * Generated from protobuf field <code>string event_type = 1;</code>
      * @return string
      */
@@ -58,6 +82,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The domain type or schema identifier of the event (e.g., 'UserCreated').
+     *
      * Generated from protobuf field <code>string event_type = 1;</code>
      * @param string $var
      * @return $this
@@ -71,6 +97,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Indexed labels used for filtering and categorizing events.
+     *
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      * @return RepeatedField<string>
      */
@@ -80,6 +108,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * Indexed labels used for filtering and categorizing events.
+     *
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      * @param string[] $var
      * @return $this
@@ -93,6 +123,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The serialized payload of the event (e.g., JSON, Protobuf).
+     *
      * Generated from protobuf field <code>bytes data = 3;</code>
      * @return string
      */
@@ -102,6 +134,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The serialized payload of the event (e.g., JSON, Protobuf).
+     *
      * Generated from protobuf field <code>bytes data = 3;</code>
      * @param string $var
      * @return $this
@@ -115,6 +149,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A universally unique identifier for the event, useful for idempotency and deduplication.
+     *
      * Generated from protobuf field <code>string uuid = 4;</code>
      * @return string
      */
@@ -124,6 +160,8 @@ class Event extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A universally unique identifier for the event, useful for idempotency and deduplication.
+     *
      * Generated from protobuf field <code>string uuid = 4;</code>
      * @param string $var
      * @return $this
@@ -132,6 +170,32 @@ class Event extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->uuid = $var;
+
+        return $this;
+    }
+
+    /**
+     * Additional context or headers (e.g., correlation IDs, user agents) not part of the core payload.
+     *
+     * Generated from protobuf field <code>repeated .umadb.v1.MetadataEntry metadata = 5;</code>
+     * @return RepeatedField<\Umadb\V1\MetadataEntry>
+     */
+    public function getMetadata()
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * Additional context or headers (e.g., correlation IDs, user agents) not part of the core payload.
+     *
+     * Generated from protobuf field <code>repeated .umadb.v1.MetadataEntry metadata = 5;</code>
+     * @param \Umadb\V1\MetadataEntry[] $var
+     * @return $this
+     */
+    public function setMetadata($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Google\Protobuf\Internal\GPBType::MESSAGE, \Umadb\V1\MetadataEntry::class);
+        $this->metadata = $arr;
 
         return $this;
     }

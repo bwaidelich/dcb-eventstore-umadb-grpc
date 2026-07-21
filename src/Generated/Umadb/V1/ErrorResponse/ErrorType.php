@@ -8,34 +8,54 @@ namespace Umadb\V1\ErrorResponse;
 use UnexpectedValueException;
 
 /**
+ * Categories of errors that can occur within the event store operations.
+ *
  * Protobuf type <code>umadb.v1.ErrorResponse.ErrorType</code>
  */
 class ErrorType
 {
     /**
+     * Disk or network input/output failure.
+     *
      * Generated from protobuf enum <code>IO = 0;</code>
      */
     const IO = 0;
     /**
+     * Failed to parse or serialize event payloads or metadata.
+     *
      * Generated from protobuf enum <code>SERIALIZATION = 1;</code>
      */
     const SERIALIZATION = 1;
     /**
+     * Data constraints violated (e.g., AppendCondition failed).
+     *
      * Generated from protobuf enum <code>INTEGRITY = 2;</code>
      */
     const INTEGRITY = 2;
     /**
+     * Underlying storage is corrupted.
+     *
      * Generated from protobuf enum <code>CORRUPTION = 3;</code>
      */
     const CORRUPTION = 3;
     /**
+     * Unhandled or unexpected internal server error.
+     *
      * Generated from protobuf enum <code>INTERNAL = 4;</code>
      */
     const INTERNAL = 4;
     /**
+     * Client is not authorized to perform the operation.
+     *
      * Generated from protobuf enum <code>AUTHENTICATION = 5;</code>
      */
     const AUTHENTICATION = 5;
+    /**
+     * The request was malformed or contained invalid parameters.
+     *
+     * Generated from protobuf enum <code>INVALID_ARGUMENT = 6;</code>
+     */
+    const INVALID_ARGUMENT = 6;
 
     private static $valueToName = [
         self::IO => 'IO',
@@ -44,6 +64,7 @@ class ErrorType
         self::CORRUPTION => 'CORRUPTION',
         self::INTERNAL => 'INTERNAL',
         self::AUTHENTICATION => 'AUTHENTICATION',
+        self::INVALID_ARGUMENT => 'INVALID_ARGUMENT',
     ];
 
     public static function name($value)

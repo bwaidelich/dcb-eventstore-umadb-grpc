@@ -10,15 +10,23 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Concurrency control and conditional checks applied before appending new events.
+ *
  * Generated from protobuf message <code>umadb.v1.AppendCondition</code>
  */
 class AppendCondition extends \Google\Protobuf\Internal\Message
 {
     /**
+     * If provided, the append operation will fail if any existing events match this query.
+     * Useful for ensuring uniqueness or preventing duplicate state changes.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.Query fail_if_events_match = 1;</code>
      */
     protected $fail_if_events_match = null;
     /**
+     * If provided, the append operation is only valid if the current head of the stream
+     * exactly matches (or is greater than) this position. Used for optimistic concurrency.
+     *
      * Generated from protobuf field <code>optional uint64 after = 2;</code>
      */
     protected $after = null;
@@ -30,7 +38,11 @@ class AppendCondition extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Umadb\V1\Query $fail_if_events_match
+     *           If provided, the append operation will fail if any existing events match this query.
+     *           Useful for ensuring uniqueness or preventing duplicate state changes.
      *     @type int|string $after
+     *           If provided, the append operation is only valid if the current head of the stream
+     *           exactly matches (or is greater than) this position. Used for optimistic concurrency.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,6 +51,9 @@ class AppendCondition extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * If provided, the append operation will fail if any existing events match this query.
+     * Useful for ensuring uniqueness or preventing duplicate state changes.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.Query fail_if_events_match = 1;</code>
      * @return \Umadb\V1\Query|null
      */
@@ -58,6 +73,9 @@ class AppendCondition extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * If provided, the append operation will fail if any existing events match this query.
+     * Useful for ensuring uniqueness or preventing duplicate state changes.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.Query fail_if_events_match = 1;</code>
      * @param \Umadb\V1\Query $var
      * @return $this
@@ -71,6 +89,9 @@ class AppendCondition extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * If provided, the append operation is only valid if the current head of the stream
+     * exactly matches (or is greater than) this position. Used for optimistic concurrency.
+     *
      * Generated from protobuf field <code>optional uint64 after = 2;</code>
      * @return int|string
      */
@@ -90,6 +111,9 @@ class AppendCondition extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * If provided, the append operation is only valid if the current head of the stream
+     * exactly matches (or is greater than) this position. Used for optimistic concurrency.
+     *
      * Generated from protobuf field <code>optional uint64 after = 2;</code>
      * @param int|string $var
      * @return $this

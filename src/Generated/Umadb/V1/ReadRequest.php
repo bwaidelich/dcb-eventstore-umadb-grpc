@@ -10,31 +10,46 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Request parameters for querying historical events from the store.
+ *
  * Generated from protobuf message <code>umadb.v1.ReadRequest</code>
  */
 class ReadRequest extends \Google\Protobuf\Internal\Message
 {
     /**
+     * The filter criteria to apply. If omitted, all events are returned.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.Query query = 1;</code>
      */
     protected $query = null;
     /**
+     * The sequence position to start reading from.
+     *
      * Generated from protobuf field <code>optional uint64 start = 2;</code>
      */
     protected $start = null;
     /**
+     * If true, reads events in reverse order (from newest to oldest).
+     *
      * Generated from protobuf field <code>optional bool backwards = 3;</code>
      */
     protected $backwards = null;
     /**
+     * The maximum number of events to return in the entire read operation.
+     *
      * Generated from protobuf field <code>optional uint32 limit = 4;</code>
      */
     protected $limit = null;
     /**
-     * Generated from protobuf field <code>optional bool subscribe = 5;</code>
+     * Deprecated: Use the separate Subscribe RPC instead for streaming new events.
+     *
+     * Generated from protobuf field <code>optional bool subscribe = 5 [deprecated = true];</code>
+     * @deprecated
      */
     protected $subscribe = null;
     /**
+     * The maximum number of events to include in a single response chunk/batch.
+     *
      * Generated from protobuf field <code>optional uint32 batch_size = 6;</code>
      */
     protected $batch_size = null;
@@ -46,11 +61,17 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Umadb\V1\Query $query
+     *           The filter criteria to apply. If omitted, all events are returned.
      *     @type int|string $start
+     *           The sequence position to start reading from.
      *     @type bool $backwards
+     *           If true, reads events in reverse order (from newest to oldest).
      *     @type int $limit
+     *           The maximum number of events to return in the entire read operation.
      *     @type bool $subscribe
+     *           Deprecated: Use the separate Subscribe RPC instead for streaming new events.
      *     @type int $batch_size
+     *           The maximum number of events to include in a single response chunk/batch.
      * }
      */
     public function __construct($data = NULL) {
@@ -59,6 +80,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The filter criteria to apply. If omitted, all events are returned.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.Query query = 1;</code>
      * @return \Umadb\V1\Query|null
      */
@@ -78,6 +101,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The filter criteria to apply. If omitted, all events are returned.
+     *
      * Generated from protobuf field <code>optional .umadb.v1.Query query = 1;</code>
      * @param \Umadb\V1\Query $var
      * @return $this
@@ -91,6 +116,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The sequence position to start reading from.
+     *
      * Generated from protobuf field <code>optional uint64 start = 2;</code>
      * @return int|string
      */
@@ -110,6 +137,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The sequence position to start reading from.
+     *
      * Generated from protobuf field <code>optional uint64 start = 2;</code>
      * @param int|string $var
      * @return $this
@@ -123,6 +152,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * If true, reads events in reverse order (from newest to oldest).
+     *
      * Generated from protobuf field <code>optional bool backwards = 3;</code>
      * @return bool
      */
@@ -142,6 +173,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * If true, reads events in reverse order (from newest to oldest).
+     *
      * Generated from protobuf field <code>optional bool backwards = 3;</code>
      * @param bool $var
      * @return $this
@@ -155,6 +188,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The maximum number of events to return in the entire read operation.
+     *
      * Generated from protobuf field <code>optional uint32 limit = 4;</code>
      * @return int
      */
@@ -174,6 +209,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The maximum number of events to return in the entire read operation.
+     *
      * Generated from protobuf field <code>optional uint32 limit = 4;</code>
      * @param int $var
      * @return $this
@@ -187,31 +224,45 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>optional bool subscribe = 5;</code>
+     * Deprecated: Use the separate Subscribe RPC instead for streaming new events.
+     *
+     * Generated from protobuf field <code>optional bool subscribe = 5 [deprecated = true];</code>
      * @return bool
+     * @deprecated
      */
     public function getSubscribe()
     {
+        if (isset($this->subscribe)) {
+            @trigger_error('subscribe is deprecated.', E_USER_DEPRECATED);
+        }
         return isset($this->subscribe) ? $this->subscribe : false;
     }
 
     public function hasSubscribe()
     {
+        if (isset($this->subscribe)) {
+            @trigger_error('subscribe is deprecated.', E_USER_DEPRECATED);
+        }
         return isset($this->subscribe);
     }
 
     public function clearSubscribe()
     {
+        @trigger_error('subscribe is deprecated.', E_USER_DEPRECATED);
         unset($this->subscribe);
     }
 
     /**
-     * Generated from protobuf field <code>optional bool subscribe = 5;</code>
+     * Deprecated: Use the separate Subscribe RPC instead for streaming new events.
+     *
+     * Generated from protobuf field <code>optional bool subscribe = 5 [deprecated = true];</code>
      * @param bool $var
      * @return $this
+     * @deprecated
      */
     public function setSubscribe($var)
     {
+        @trigger_error('subscribe is deprecated.', E_USER_DEPRECATED);
         GPBUtil::checkBool($var);
         $this->subscribe = $var;
 
@@ -219,6 +270,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The maximum number of events to include in a single response chunk/batch.
+     *
      * Generated from protobuf field <code>optional uint32 batch_size = 6;</code>
      * @return int
      */
@@ -238,6 +291,8 @@ class ReadRequest extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The maximum number of events to include in a single response chunk/batch.
+     *
      * Generated from protobuf field <code>optional uint32 batch_size = 6;</code>
      * @param int $var
      * @return $this

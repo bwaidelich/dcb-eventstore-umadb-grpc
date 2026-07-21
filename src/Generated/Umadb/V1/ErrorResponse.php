@@ -10,15 +10,21 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Standardized error payload for RPC failures.
+ *
  * Generated from protobuf message <code>umadb.v1.ErrorResponse</code>
  */
 class ErrorResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * A human-readable description of the error.
+     *
      * Generated from protobuf field <code>string message = 1;</code>
      */
     protected $message = '';
     /**
+     * The categorized type of the error.
+     *
      * Generated from protobuf field <code>.umadb.v1.ErrorResponse.ErrorType error_type = 2;</code>
      */
     protected $error_type = 0;
@@ -30,7 +36,9 @@ class ErrorResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string $message
+     *           A human-readable description of the error.
      *     @type int $error_type
+     *           The categorized type of the error.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,6 +47,8 @@ class ErrorResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A human-readable description of the error.
+     *
      * Generated from protobuf field <code>string message = 1;</code>
      * @return string
      */
@@ -48,6 +58,8 @@ class ErrorResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A human-readable description of the error.
+     *
      * Generated from protobuf field <code>string message = 1;</code>
      * @param string $var
      * @return $this
@@ -61,6 +73,8 @@ class ErrorResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The categorized type of the error.
+     *
      * Generated from protobuf field <code>.umadb.v1.ErrorResponse.ErrorType error_type = 2;</code>
      * @return int
      */
@@ -70,6 +84,8 @@ class ErrorResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The categorized type of the error.
+     *
      * Generated from protobuf field <code>.umadb.v1.ErrorResponse.ErrorType error_type = 2;</code>
      * @param int $var
      * @return $this

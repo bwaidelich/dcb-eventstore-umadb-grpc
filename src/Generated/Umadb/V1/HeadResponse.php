@@ -10,11 +10,15 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Response containing the current highest sequence number in the store.
+ *
  * Generated from protobuf message <code>umadb.v1.HeadResponse</code>
  */
 class HeadResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * The position of the most recently recorded event.
+     *
      * Generated from protobuf field <code>optional uint64 position = 1;</code>
      */
     protected $position = null;
@@ -26,6 +30,7 @@ class HeadResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int|string $position
+     *           The position of the most recently recorded event.
      * }
      */
     public function __construct($data = NULL) {
@@ -34,6 +39,8 @@ class HeadResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The position of the most recently recorded event.
+     *
      * Generated from protobuf field <code>optional uint64 position = 1;</code>
      * @return int|string
      */
@@ -53,6 +60,8 @@ class HeadResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The position of the most recently recorded event.
+     *
      * Generated from protobuf field <code>optional uint64 position = 1;</code>
      * @param int|string $var
      * @return $this

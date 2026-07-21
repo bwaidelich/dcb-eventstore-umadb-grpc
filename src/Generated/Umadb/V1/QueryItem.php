@@ -10,15 +10,21 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * A specific filter condition used to match events in the store.
+ *
  * Generated from protobuf message <code>umadb.v1.QueryItem</code>
  */
 class QueryItem extends \Google\Protobuf\Internal\Message
 {
     /**
+     * A list of event types to match.
+     *
      * Generated from protobuf field <code>repeated string types = 1;</code>
      */
     private $types;
     /**
+     * A list of event tags to match.
+     *
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      */
     private $tags;
@@ -30,7 +36,9 @@ class QueryItem extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type string[] $types
+     *           A list of event types to match.
      *     @type string[] $tags
+     *           A list of event tags to match.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,6 +47,8 @@ class QueryItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A list of event types to match.
+     *
      * Generated from protobuf field <code>repeated string types = 1;</code>
      * @return RepeatedField<string>
      */
@@ -48,6 +58,8 @@ class QueryItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A list of event types to match.
+     *
      * Generated from protobuf field <code>repeated string types = 1;</code>
      * @param string[] $var
      * @return $this
@@ -61,6 +73,8 @@ class QueryItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A list of event tags to match.
+     *
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      * @return RepeatedField<string>
      */
@@ -70,6 +84,8 @@ class QueryItem extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A list of event tags to match.
+     *
      * Generated from protobuf field <code>repeated string tags = 2;</code>
      * @param string[] $var
      * @return $this

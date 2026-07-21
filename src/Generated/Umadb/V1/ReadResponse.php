@@ -10,15 +10,21 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * A chunk of historical events returned from a Read request.
+ *
  * Generated from protobuf message <code>umadb.v1.ReadResponse</code>
  */
 class ReadResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * The list of events matching the read criteria.
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.SequencedEvent events = 1;</code>
      */
     private $events;
     /**
+     * The position of the most recent event in the store at the time of the read.
+     *
      * Generated from protobuf field <code>optional uint64 head = 2;</code>
      */
     protected $head = null;
@@ -30,7 +36,9 @@ class ReadResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Umadb\V1\SequencedEvent[] $events
+     *           The list of events matching the read criteria.
      *     @type int|string $head
+     *           The position of the most recent event in the store at the time of the read.
      * }
      */
     public function __construct($data = NULL) {
@@ -39,6 +47,8 @@ class ReadResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The list of events matching the read criteria.
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.SequencedEvent events = 1;</code>
      * @return RepeatedField<\Umadb\V1\SequencedEvent>
      */
@@ -48,6 +58,8 @@ class ReadResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The list of events matching the read criteria.
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.SequencedEvent events = 1;</code>
      * @param \Umadb\V1\SequencedEvent[] $var
      * @return $this
@@ -61,6 +73,8 @@ class ReadResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The position of the most recent event in the store at the time of the read.
+     *
      * Generated from protobuf field <code>optional uint64 head = 2;</code>
      * @return int|string
      */
@@ -80,6 +94,8 @@ class ReadResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The position of the most recent event in the store at the time of the read.
+     *
      * Generated from protobuf field <code>optional uint64 head = 2;</code>
      * @param int|string $var
      * @return $this

@@ -10,11 +10,15 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Confirmation of a successful append operation.
+ *
  * Generated from protobuf message <code>umadb.v1.AppendResponse</code>
  */
 class AppendResponse extends \Google\Protobuf\Internal\Message
 {
     /**
+     * The new head position of the event store after committing these events.
+     *
      * Generated from protobuf field <code>uint64 position = 1;</code>
      */
     protected $position = 0;
@@ -26,6 +30,7 @@ class AppendResponse extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type int|string $position
+     *           The new head position of the event store after committing these events.
      * }
      */
     public function __construct($data = NULL) {
@@ -34,6 +39,8 @@ class AppendResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The new head position of the event store after committing these events.
+     *
      * Generated from protobuf field <code>uint64 position = 1;</code>
      * @return int|string
      */
@@ -43,6 +50,8 @@ class AppendResponse extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * The new head position of the event store after committing these events.
+     *
      * Generated from protobuf field <code>uint64 position = 1;</code>
      * @param int|string $var
      * @return $this
