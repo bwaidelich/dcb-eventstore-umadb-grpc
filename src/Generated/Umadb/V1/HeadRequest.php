@@ -10,6 +10,8 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * Request to fetch the current highest sequence number in the store.
+ *
  * Generated from protobuf message <code>umadb.v1.HeadRequest</code>
  */
 class HeadRequest extends \Google\Protobuf\Internal\Message

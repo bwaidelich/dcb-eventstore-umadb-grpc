@@ -10,11 +10,15 @@ use Google\Protobuf\Internal\GPBUtil;
 use Google\Protobuf\RepeatedField;
 
 /**
+ * A collection of filter conditions. Events matching these items will be returned.
+ *
  * Generated from protobuf message <code>umadb.v1.Query</code>
  */
 class Query extends \Google\Protobuf\Internal\Message
 {
     /**
+     * A list of query items, typically evaluated as a logical OR (match this item OR that item).
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.QueryItem items = 1;</code>
      */
     private $items;
@@ -26,6 +30,7 @@ class Query extends \Google\Protobuf\Internal\Message
      *     Optional. Data for populating the Message object.
      *
      *     @type \Umadb\V1\QueryItem[] $items
+     *           A list of query items, typically evaluated as a logical OR (match this item OR that item).
      * }
      */
     public function __construct($data = NULL) {
@@ -34,6 +39,8 @@ class Query extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A list of query items, typically evaluated as a logical OR (match this item OR that item).
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.QueryItem items = 1;</code>
      * @return RepeatedField<\Umadb\V1\QueryItem>
      */
@@ -43,6 +50,8 @@ class Query extends \Google\Protobuf\Internal\Message
     }
 
     /**
+     * A list of query items, typically evaluated as a logical OR (match this item OR that item).
+     *
      * Generated from protobuf field <code>repeated .umadb.v1.QueryItem items = 1;</code>
      * @param \Umadb\V1\QueryItem[] $var
      * @return $this
